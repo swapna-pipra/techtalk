@@ -1,0 +1,130 @@
+.org-tree {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  padding-bottom: 2rem;
+}
+
+.org-tree ul {
+  padding-top: 20px;
+  position: relative;
+  display: flex;
+  transition: all 0.5s;
+  padding-left: 0;
+  margin: 0;
+}
+
+.org-tree li {
+  float: left;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: 20px 10px 0 10px;
+  transition: all 0.5s;
+}
+
+/* We will use ::before and ::after to draw the connectors */
+.org-tree li::before, .org-tree li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 2px solid var(--border);
+  width: 50%;
+  height: 20px;
+}
+
+.org-tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 2px solid var(--border);
+}
+
+/* We need to remove left-right connectors from elements without any siblings */
+.org-tree li:only-child::after, .org-tree li:only-child::before {
+  display: none;
+}
+
+/* Remove space from the top of single children */
+.org-tree li:only-child {
+  padding-top: 0;
+}
+
+/* Remove left connector from first child and right connector from last child */
+.org-tree li:first-child::before, .org-tree li:last-child::after {
+  border: 0 none;
+}
+
+/* Adding back the vertical connector to the last nodes */
+.org-tree li:last-child::before {
+  border-right: 2px solid var(--border);
+  border-radius: 0 5px 0 0;
+}
+.org-tree li:first-child::after {
+  border-radius: 5px 0 0 0;
+}
+
+/* Time to add downward connectors from parents */
+.org-tree ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 2px solid var(--border);
+  width: 0;
+  height: 20px;
+  margin-left: -1px;
+}
+
+/* Node card styling */
+.org-node-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  min-width: 180px;
+  max-width: 200px;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  z-index: 10;
+}
+
+.org-node-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.org-node-card.match {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+.org-node-card.dimmed {
+  opacity: 0.4;
+}
+
+/* Tree expand/collapse toggle */
+.node-toggle {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  color: var(--primary);
+}
+.node-toggle:hover {
+  background: var(--surface-hover);
+}
