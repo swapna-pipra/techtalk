@@ -46,7 +46,7 @@ const Sidebar = () => {
             <Target size={18} /> Goals & Perf
           </NavLink>
           <NavLink to="/ess/org-chart" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-            <Network size={18} /> Org Chart
+            <Network size={18} /> Organization
           </NavLink>
         </div>
       </nav>
