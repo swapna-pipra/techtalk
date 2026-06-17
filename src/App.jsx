@@ -15,13 +15,6 @@ import Documents from './pages/ess/Documents';
 import Goals from './pages/ess/Goals';
 import OrgChart from './pages/ess/OrgChart';
 
-import TeamAnalytics from './pages/mss/TeamAnalytics';
-import TeamAttendance from './pages/mss/TeamAttendance';
-import LeaveApprovals from './pages/mss/LeaveApprovals';
-import PerformanceReviews from './pages/mss/PerformanceReviews';
-import TeamDirectory from './pages/mss/TeamDirectory';
-import Probation from './pages/mss/Probation';
-
 // Layout component to share sidebar/navbar
 const DashboardLayout = ({ children }) => {
   return (
@@ -59,19 +52,6 @@ function App() {
           <Route path="/*" element={
             <ProtectedRoute>
               <Routes>
-                {/* Manager Routes */}
-                <Route path="/mss/*" element={
-                  <Routes>
-                    <Route path="analytics" element={<TeamAnalytics />} />
-                    <Route path="attendance" element={<TeamAttendance />} />
-                    <Route path="leave" element={<LeaveApprovals />} />
-                    <Route path="performance" element={<PerformanceReviews />} />
-                    <Route path="directory" element={<TeamDirectory />} />
-                    <Route path="probation" element={<Probation />} />
-                    <Route path="*" element={<Navigate to="analytics" replace />} />
-                  </Routes>
-                } />
-
                 {/* Employee Routes */}
                 <Route path="/ess/*" element={
                   <Routes>
@@ -86,9 +66,9 @@ function App() {
                   </Routes>
                 } />
 
-                {/* Root Redirection Logic */}
-                <Route path="/" element={<RoleBasedRootRedirect />} />
-                <Route path="*" element={<RoleBasedRootRedirect />} />
+                {/* Root Redirect — always go to ESS */}
+                <Route path="/" element={<Navigate to="/ess/profile" replace />} />
+                <Route path="*" element={<Navigate to="/ess/profile" replace />} />
               </Routes>
             </ProtectedRoute>
           } />
@@ -97,12 +77,5 @@ function App() {
     </AuthProvider>
   );
 }
-
-// Helper component to redirect to the correct dashboard based on role
-const RoleBasedRootRedirect = () => {
-  const { user } = useAuth();
-  if (user?.role === 'MANAGER') return <Navigate to="/mss/analytics" replace />;
-  return <Navigate to="/ess/profile" replace />;
-};
 
 export default App;

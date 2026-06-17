@@ -5,7 +5,7 @@ const Holidays = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/holidays')
+    fetch('/api/holidays')
       .then(res => res.json())
       .then(data => {
         setHolidays(data);

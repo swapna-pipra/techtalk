@@ -136,6 +136,13 @@ export async function setupDatabase() {
     }
   }
 
+  // Seed demo users if empty
+  const userCount = await db.get('SELECT COUNT(*) as count FROM users');
+  if (userCount.count === 0) {
+    await db.run(`INSERT INTO users (username, password, role) VALUES (?, ?, ?)`, ['employee1', 'password123', 'EMPLOYEE']);
+    await db.run(`INSERT INTO users (username, password, role) VALUES (?, ?, ?)`, ['admin', 'admin123', 'EMPLOYEE']);
+  }
+
   // Seed Holidays if empty
   const holidayCount = await db.get('SELECT COUNT(*) as count FROM holidays');
   if (holidayCount.count === 0) {

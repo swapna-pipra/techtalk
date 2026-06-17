@@ -21,7 +21,7 @@ const Register = () => {
     setIsLoading(true);
 
     try {
-      const res = await fetch('http://localhost:3001/api/register', {
+      const res = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -72,7 +72,6 @@ const Register = () => {
                 required
               >
                 <option value="EMPLOYEE">Employee (ESS)</option>
-                <option value="MANAGER">Manager (MSS)</option>
               </select>
             </div>
           </div>

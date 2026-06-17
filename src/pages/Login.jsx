@@ -21,7 +21,7 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const res = await fetch('http://localhost:3001/api/login', {
+      const res = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -112,15 +112,8 @@ const Login = () => {
             >
               Fill Employee (ESS)
             </button>
-            <button 
-              className="btn btn-secondary" 
-              style={{ fontSize: '0.75rem', padding: '0.25rem 0.5rem', flex: 1 }}
-              onClick={() => setFormData({ username: 'manager1', password: 'password123' })}
-            >
-              Fill Manager (MSS)
-            </button>
           </div>
-          <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--text-muted)' }}>Use these to quickly test the Role-Based Access views.</p>
+          <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--text-muted)' }}>Use this to quickly test the Employee Self-Service view.</p>
         </div>
 
         <p style={{ marginTop: '1.5rem', fontSize: '0.875rem', color: 'var(--text-muted)' }}>

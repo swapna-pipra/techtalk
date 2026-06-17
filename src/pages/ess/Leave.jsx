@@ -7,7 +7,7 @@ const Leave = () => {
   const [loading, setLoading] = useState(true);
 
   React.useEffect(() => {
-    fetch('http://localhost:3001/api/leave')
+    fetch('/api/leave')
       .then(res => res.json())
       .then(data => {
         setLeaveRequests(data);
@@ -75,7 +75,7 @@ const Leave = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:3001/api/leave', {
+      const response = await fetch('/api/leave', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
