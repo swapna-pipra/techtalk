@@ -47,8 +47,8 @@ const Login = () => {
           <div style={{ display: 'inline-flex', padding: '1rem', backgroundColor: 'var(--surface)', borderRadius: '50%', marginBottom: '1rem' }}>
             <LogIn size={32} color="var(--primary)" />
           </div>
-          <h1 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Pi ERP - Employee Portal</h1>
-          <p style={{ color: 'var(--text-muted)' }}>Sign in to access your dashboard</p>
+          <h1 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Pi ERP - Project Work</h1>
+          <p style={{ color: 'var(--text-muted)' }}>Sign in to manage your projects</p>
         </div>
 
         {error && (
