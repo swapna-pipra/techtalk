@@ -47,8 +47,8 @@ const Login = () => {
           <div style={{ display: 'inline-flex', padding: '1rem', backgroundColor: 'var(--surface)', borderRadius: '50%', marginBottom: '1rem' }}>
             <LogIn size={32} color="var(--primary)" />
           </div>
-          <h1 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Welcome Back</h1>
-          <p style={{ color: 'var(--text-muted)' }}>Sign in to your Pi ERP account</p>
+          <h1 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Pi ERP - Employee Portal</h1>
+          <p style={{ color: 'var(--text-muted)' }}>Sign in to access your dashboard</p>
         </div>
 
         {error && (
@@ -118,6 +118,10 @@ const Login = () => {
 
         <p style={{ marginTop: '1.5rem', fontSize: '0.875rem', color: 'var(--text-muted)' }}>
           Don't have an account? <Link to="/register" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 600 }}>Register</Link>
+        </p>
+
+        <p style={{ marginTop: '1.5rem', fontSize: '0.7rem', color: 'var(--text-muted)', borderTop: '1px solid var(--border)', paddingTop: '1rem' }}>
+          Powered by <strong>Pipra Solutions</strong> | CI/CD Demo
         </p>
 
       </div>
