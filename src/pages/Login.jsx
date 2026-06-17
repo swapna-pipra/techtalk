@@ -119,11 +119,6 @@ const Login = () => {
         <p style={{ marginTop: '1.5rem', fontSize: '0.875rem', color: 'var(--text-muted)' }}>
           Don't have an account? <Link to="/register" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 600 }}>Register</Link>
         </p>
-
-        <p style={{ marginTop: '1.5rem', fontSize: '0.7rem', color: 'var(--text-muted)', borderTop: '1px solid var(--border)', paddingTop: '1rem' }}>
-          Powered by <strong>Pipra Solutions</strong> | CI/CD Demo
-        </p>
-
       </div>
     </div>
   );
