@@ -4,8 +4,8 @@ import { Calendar, Clock, Plane, FileText } from 'lucide-react';
 const Dashboard = () => {
   return (
     <div className="animate-fade-in">
-      <h1>Dashboard</h1>
-      <p className="text-muted" style={{ marginBottom: '2rem' }}>Welcome back, John! Here's what's happening today.</p>
+      <h1>Dashboard Overview</h1>
+      <p className="text-muted" style={{ marginBottom: '2rem' }}>Here's what's happening today.</p>
 
       <div className="grid-cards" style={{ marginBottom: '2rem' }}>
         <div className="card">
