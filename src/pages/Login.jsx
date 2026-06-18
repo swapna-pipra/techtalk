@@ -113,7 +113,6 @@ const Login = () => {
       <div style={styles.rightPanel}>
         <div style={styles.formContainer}>
           <div style={styles.formHeader}>
-            <div style={styles.liveBadge}>🚀 Live Demo — CI/CD Deployed</div>
             <h2 style={styles.welcomeText}>Welcome back</h2>
             <p style={styles.welcomeSubtext}>Sign in to your account to continue</p>
           </div>
@@ -317,18 +316,6 @@ const styles = {
   },
   formHeader: {
     marginBottom: '2rem',
-  },
-  liveBadge: {
-    display: 'inline-block',
-    padding: '0.4rem 0.85rem',
-    fontSize: '0.75rem',
-    fontWeight: '600',
-    color: '#059669',
-    backgroundColor: '#ecfdf5',
-    border: '1px solid #a7f3d0',
-    borderRadius: '20px',
-    marginBottom: '1rem',
-    letterSpacing: '0.3px',
   },
   welcomeText: {
     fontSize: '1.75rem',

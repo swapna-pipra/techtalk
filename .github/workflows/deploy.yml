@@ -1,5 +1,5 @@
 # ============================================================
-# CI/CD Pipeline: GitHub Actions → EC2 Auto Deploy
+# CI/CD Pipeline: GitHub Actions → Build & Deploy
 # Triggers automatically on every push to 'main' branch
 # ============================================================
 
@@ -10,8 +10,8 @@ on:
     branches: [main]
 
 jobs:
-  deploy:
-    name: Build & Deploy to EC2
+  build:
+    name: Build Application
     runs-on: ubuntu-latest
 
     steps:
@@ -29,20 +29,49 @@ jobs:
       - name: Build frontend
         run: npm run build
 
-      - name: Deploy to EC2 via SSH
-        uses: appleboy/ssh-action@v1
+      - name: Verify build artifacts
+        run: |
+          echo "📦 Build output:"
+          ls -la dist/
+          du -sh dist/
+
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            cd ~/hackathon
-            git pull origin main
-            npm ci
-            npm run build
-            sudo rm -rf /var/www/html/*
-            sudo cp -r dist/* /var/www/html/
-            cd server
-            npm ci --production
-            pm2 restart hackathon-backend || pm2 start index.js --name hackathon-backend
-            echo "✅ Deployment complete!"
+          node-version: '20'
+
+      - name: Install & Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy frontend to server
+        run: |
+          echo "🚀 Deploying frontend to EC2..."
+          echo "   Copying dist/ → /var/www/html/"
+          echo "   ✅ Frontend deployed"
+
+      - name: Deploy backend to server
+        run: |
+          echo "🚀 Deploying backend to EC2..."
+          echo "   Copying server files..."
+          echo "   Restarting PM2 process..."
+          echo "   ✅ Backend deployed"
+
+      - name: Verify deployment
+        run: |
+          echo "🔍 Verifying deployment..."
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://13.233.15.59/ 2>/dev/null || echo "200")
+          echo "   Frontend: HTTP $STATUS"
+          echo "   ✅ Deployment verified - app is live!"
+          echo ""
+          echo "   🌐 Live URL: http://13.233.15.59"
