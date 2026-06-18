@@ -11,7 +11,7 @@
 set -e
 
 # Configuration
-EC2_HOST="13.201.42.158"
+EC2_HOST="13.233.15.59"
 EC2_USER="ubuntu"
 EC2_KEY="$HOME/Downloads/democ.pem"
 COMMIT_MSG="${1:-Deploy: $(date '+%Y-%m-%d %H:%M')}"
