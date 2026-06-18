@@ -113,7 +113,7 @@ const Login = () => {
       <div style={styles.rightPanel}>
         <div style={styles.formContainer}>
           <div style={styles.formHeader}>
-            <h2 style={styles.welcomeText}>Welcome back</h2>
+            <h2 style={styles.welcomeText}>Dashboard Overview</h2>
             <p style={styles.welcomeSubtext}>Sign in to your account to continue</p>
           </div>
 
