@@ -49,8 +49,8 @@ const Login = () => {
             <div style={styles.logoIcon}>
               <Building2 size={36} color="#ffffff" />
             </div>
-            <h1 style={styles.brandTitle}>Pi ERP</h1>
-            <p style={styles.brandSubtitle}>Enterprise Resource Planning</p>
+            <h1 style={styles.brandTitle}>Employee Self Service</h1>
+            <p style={styles.brandSubtitle}>HR Management Portal</p>
           </div>
 
           {/* Illustration - Abstract SVG */}
