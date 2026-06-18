@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { User, Lock, LogIn, Building2, Shield, Users, BarChart3 } from 'lucide-react';
+import { User, Lock, LogIn, Building2, Users, BarChart3 } from 'lucide-react';
 
 const Login = () => {
   const [formData, setFormData] = useState({ username: '', password: '' });
@@ -99,7 +99,7 @@ const Login = () => {
               <span style={styles.featureText}>Team Analytics</span>
             </div>
             <div style={styles.featureItem}>
-              <Shield size={18} color="rgba(255,255,255,0.8)" />
+              <Lock size={18} color="rgba(255,255,255,0.8)" />
               <span style={styles.featureText}>Secure & Reliable</span>
             </div>
           </div>
@@ -201,14 +201,6 @@ const Login = () => {
               >
                 <User size={14} />
                 Employee (ESS)
-              </button>
-              <button
-                style={styles.demoBtnAlt}
-                onClick={() => setFormData({ username: 'manager1', password: 'password123' })}
-                type="button"
-              >
-                <Shield size={14} />
-                Manager (MSS)
               </button>
             </div>
           </div>
@@ -479,22 +471,7 @@ const styles = {
     cursor: 'pointer',
     transition: 'background-color 0.2s',
   },
-  demoBtnAlt: {
-    flex: 1,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '0.4rem',
-    padding: '0.5rem 0.75rem',
-    fontSize: '0.8rem',
-    fontWeight: '500',
-    color: '#7c3aed',
-    backgroundColor: '#ffffff',
-    border: '1px solid #ddd6fe',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    transition: 'background-color 0.2s',
-  },
+
   registerText: {
     textAlign: 'center',
     marginTop: '1.5rem',
